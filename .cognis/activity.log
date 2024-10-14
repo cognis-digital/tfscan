@@ -5,3 +5,4 @@
 2024-08-15T09:53:43  chore(engine): add a dry-run flag
 2024-09-05T16:10:50  chore(report): add type hints to the public API
 2024-09-24T11:27:57  test(detect): guard against ReDoS in patterns
+2024-10-14T18:44:04  style(scoring): add a regression fixture
