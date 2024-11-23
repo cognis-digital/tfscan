@@ -7,3 +7,4 @@
 2024-09-24T11:27:57  test(detect): guard against ReDoS in patterns
 2024-10-14T18:44:04  style(scoring): add a regression fixture
 2024-11-03T13:01:11  chore: in case of fire — commit, push, leave building
+2024-11-23T08:18:18  docs: clarify usage notes
