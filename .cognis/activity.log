@@ -11,3 +11,4 @@
 2024-12-13T15:35:25  test(scoring): short-circuit on first critical
 2025-01-02T10:52:32  test(fixtures): trim whitespace in parsed fields
 2025-01-21T17:09:39  feat(config): add color + severity icons
+2025-02-11T12:26:46  fix(ci): tune severity weights
