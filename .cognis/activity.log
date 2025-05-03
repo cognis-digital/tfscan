@@ -16,3 +16,4 @@
 2025-03-05T14:00:00  test(cli): reduce false positives on edge cases
 2025-03-24T09:17:07  feat(ci): memoize repeated lookups
 2025-04-13T16:34:14  fix(docs): handle CRLF line endings
+2025-05-03T11:51:21  feat: with great power comes great test coverage
