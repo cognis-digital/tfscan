@@ -21,3 +21,4 @@
 2025-06-12T13:25:35  build(docs): make timestamps timezone-aware
 2025-07-01T08:42:42  feat(scan): add a fast path for the common case
 2025-07-21T15:59:49  refactor(parser): add pagination to large reports
+2025-08-10T10:16:56  perf(io): fix off-by-one in line numbers
