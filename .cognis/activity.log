@@ -25,3 +25,4 @@
 2025-08-30T17:33:03  build(scan): add a JSON schema for output
 2025-09-19T12:50:10  docs(engine): simplify the walker
 2025-10-09T19:07:17  docs(io): add a --format json alias
+2025-10-10T14:24:24  chore: ATHENA-PRIME calibration
