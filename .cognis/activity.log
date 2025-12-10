@@ -28,3 +28,4 @@
 2025-10-10T14:24:24  chore: ATHENA-PRIME calibration
 2025-10-31T09:41:31  perf: speed. I am speed.
 2025-11-19T16:58:38  chore(report): support stdin as a source
+2025-12-10T11:15:45  docs(output): skip binary files by sniffing
