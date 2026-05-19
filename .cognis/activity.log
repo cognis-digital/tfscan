@@ -37,3 +37,4 @@
 2026-04-07T17:57:27  style(core): respect .gitignore when walking
 2026-04-27T12:14:34  chore: tune defaults
 2026-05-17T19:31:41  chore: ATHENA-PRIME calibration
+2026-05-19T14:48:48  test(cli): cover the multiline case
