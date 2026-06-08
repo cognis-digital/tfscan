@@ -36,9 +36,11 @@ Scan Terraform plans/configs for misconfigurations — without standing up heavy
 <a name="features"></a>
 ## Features
 
-- ✅ Todo
-- ✅ Fixme
-- ✅ Xxx
+- ✅ Parse Hcl
+- ✅ Parse Plan Json
+- ✅ Load Checks
+- ✅ Scan Text
+- ✅ Scan Path
 - ✅ Runs on Linux/macOS/Windows · Docker · devcontainer
 - ✅ Ports in Python, JavaScript, Go, and Rust (`ports/`)
 
