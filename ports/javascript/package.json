@@ -1,0 +1,10 @@
+{
+  "name": "@cognis/tfscan",
+  "version": "0.2.0",
+  "description": "JavaScript port of tfscan (Cognis Neural Suite)",
+  "bin": {
+    "tfscan": "index.js"
+  },
+  "license": "LicenseRef-COCL-1.0",
+  "type": "module"
+}
