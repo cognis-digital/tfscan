@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: tfscan, labels: { app: tfscan } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: tfscan } }
+  template:
+    metadata: { labels: { app: tfscan } }
+    spec:
+      containers:
+        - name: tfscan
+          image: ghcr.io/cognis-digital/tfscan:latest
+          ports: [{ containerPort: 8000 }]
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "500m", memory: "256Mi" }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: tfscan }
+spec:
+  selector: { app: tfscan }
+  ports: [{ port: 80, targetPort: 8000 }]
