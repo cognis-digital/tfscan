@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-tfscan
+pip install "git+https://github.com/cognis-digital/tfscan.git"
 tfscan scan .            # → prioritized findings in seconds
 ```
 
@@ -50,7 +50,7 @@ Scan Terraform plans/configs for misconfigurations — without standing up heavy
 ## Quick start
 
 ```bash
-pip install cognis-tfscan
+pip install "git+https://github.com/cognis-digital/tfscan.git"
 tfscan --version
 tfscan scan .                       # scan current project
 tfscan scan . --format json         # machine-readable
