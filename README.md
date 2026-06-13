@@ -20,6 +20,31 @@ pip install cognis-tfscan
 tfscan scan .            # → prioritized findings in seconds
 ```
 
+## Usage — step by step
+
+1. **Install** the CLI (console script `tfscan`):
+   ```bash
+   pip install cognis-tfscan
+   ```
+2. **Scan Terraform** — `scan` walks a file or directory of `.tf` / `.tf.json` / plan files for misconfigurations:
+   ```bash
+   tfscan scan ./infra
+   ```
+3. **Filter by severity / change format** — restrict noise and emit JSON or a shareable HTML report:
+   ```bash
+   tfscan scan ./infra --min-severity HIGH
+   tfscan scan ./infra --format html -o report.html
+   ```
+4. **Read the output** — each finding carries `severity`, `check_id`, the `resource`, `file:line`, and a `remediation`. Exit codes: `0` clean, `1` findings present, `2` scan error:
+   ```bash
+   tfscan scan ./infra --format json | jq '.findings[] | {check_id, severity, resource_name}'
+   ```
+5. **Automate in CI** — block merges that introduce HIGH/CRITICAL misconfigs:
+   ```yaml
+   - run: pip install cognis-tfscan
+   - run: tfscan scan ./infra --min-severity HIGH  # nonzero exit fails the job
+   ```
+
 ## Contents
 
 - [Why tfscan?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
