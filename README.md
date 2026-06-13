@@ -20,6 +20,12 @@ pip install "git+https://github.com/cognis-digital/tfscan.git"
 tfscan scan .            # → prioritized findings in seconds
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+tfscan checks your Terraform infrastructure code for common security mistakes before you deploy anything to the cloud. It reads the same `.tf` files or plan output that Terraform uses and flags issues like S3 buckets open to the public, databases accessible from the internet, or storage volumes that aren't encrypted. You get a clear list of findings with severity levels and suggested fixes, which you can plug straight into your CI pipeline to block unsafe deployments automatically. It is built for developers and DevOps teams who want a fast, no-setup security check on their cloud infrastructure as code.
+<!-- cognis:layman:end -->
+
 ## Contents
 
 - [Why tfscan?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
@@ -47,6 +53,42 @@ Scan Terraform plans/configs for misconfigurations — without standing up heavy
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:install:start -->
+## Install
+
+`tfscan` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/tfscan/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/tfscan/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/tfscan.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/tfscan.git"  # uv
+pip install "git+https://github.com/cognis-digital/tfscan.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/tfscan.git
+cd tfscan && pip install .
+```
+
+Then run:
+```sh
+tfscan --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash
