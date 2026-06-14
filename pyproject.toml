@@ -34,3 +34,6 @@ tfscan = "tfscan.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["tfscan"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
