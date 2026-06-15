@@ -202,14 +202,26 @@ def parse_hcl(text: str, filename: str = "") -> list[Resource]:
 
 def parse_plan_json(text: str, filename: str = "") -> list[Resource]:
     """Parse `terraform show -json` plan output or a .tf.json document."""
+    if not text or not text.strip():
+        raise ValueError("empty JSON input")
     data = json.loads(text)
+    if not isinstance(data, dict):
+        raise ValueError(
+            f"expected a JSON object at top level, got {type(data).__name__}"
+        )
     resources: list[Resource] = []
 
     def walk_module(mod: dict[str, Any]) -> None:
+        if not isinstance(mod, dict):
+            return
         for r in mod.get("resources", []) or []:
-            rtype = r.get("type", "")
-            name = r.get("name", "")
+            if not isinstance(r, dict):
+                continue
+            rtype = r.get("type", "") or ""
+            name = r.get("name", "") or ""
             vals = r.get("values", r.get("expressions", {})) or {}
+            if not isinstance(vals, dict):
+                vals = {}
             resources.append(Resource(rtype, name, vals, filename, 0))
         for child in mod.get("child_modules", []) or []:
             walk_module(child)
@@ -477,6 +489,8 @@ def _run_checks(resources: list[Resource], checks: list[Check]) -> list[Finding]
 
 def scan_text(text: str, filename: str = "<text>", as_json: bool | None = None) -> ScanResult:
     """Scan a single document's text."""
+    if text is None:
+        text = ""
     checks = load_checks()
     is_json = as_json
     if is_json is None:
@@ -496,14 +510,24 @@ def _iter_files(path: str) -> Iterable[str]:
     if os.path.isfile(path):
         yield path
         return
+    if not os.path.isdir(path):
+        return  # caller checks existence before calling; yields nothing safely
     for root, _dirs, files in os.walk(path):
-        for fn in files:
+        for fn in sorted(files):  # deterministic order
             if fn.endswith((".tf", ".tf.json")) or fn.endswith(".json"):
                 yield os.path.join(root, fn)
 
 
 def scan_path(path: str) -> ScanResult:
     """Scan a file or directory tree of Terraform configs/plans."""
+    if not path or not path.strip():
+        result = ScanResult()
+        result.errors.append("scan_path: path must not be empty")
+        return result
+    if not os.path.exists(path):
+        result = ScanResult()
+        result.errors.append(f"path not found: {path}")
+        return result
     checks = load_checks()
     agg = ScanResult()
     for fpath in _iter_files(path):

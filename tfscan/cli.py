@@ -168,7 +168,22 @@ def main(argv: list[str] | None = None) -> int:
         parser.print_help()
         return 2
 
-    result = scan_path(args.path)
+    # Validate the path before handing it to the scanner so the user gets a
+    # clear message instead of a silent empty result.
+    import os as _os
+    if not args.path or not args.path.strip():
+        print("error: path argument must not be empty", file=sys.stderr)
+        return 2
+    if not _os.path.exists(args.path):
+        print(f"error: path not found: {args.path}", file=sys.stderr)
+        return 2
+
+    try:
+        result = scan_path(args.path)
+    except Exception as exc:  # pragma: no cover
+        print(f"error: unexpected failure during scan: {exc}", file=sys.stderr)
+        return 2
+
     result = _filter_severity(result, args.min_severity)
 
     if args.format == "json":
