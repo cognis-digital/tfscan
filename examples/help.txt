@@ -1,0 +1,14 @@
+$ tfscan-emit --help
+
+usage: tfscan [-h] [--version] {scan} ...
+
+Scan Terraform plans/configs for misconfigurations (defensive IaC misconfig
+gate).
+
+positional arguments:
+  {scan}
+    scan      Scan a file or directory of .tf/.tf.json/plan files
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit

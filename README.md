@@ -20,6 +20,62 @@ pip install cognis-tfscan
 tfscan scan .            # → prioritized findings in seconds
 ```
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ tfscan-emit --version
+tfscan 0.1.0
+```
+
+```console
+$ tfscan-emit --help
+usage: tfscan [-h] [--version] {scan} ...
+
+Scan Terraform plans/configs for misconfigurations (defensive IaC misconfig
+gate).
+
+positional arguments:
+  {scan}
+    scan      Scan a file or directory of .tf/.tf.json/plan files
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
+```
+
+> Blocks above are real `tfscan` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"findings": [
+    {
+        "id": "1234567890",
+        "title": "Suspicious Network Traffic",
+        "description": "Potential malicious activity detected on network interface 192.168.1.100.",
+        "severity": "high",
+        "created_at": "2023-02-16T14:30:00Z",
+        "updated_at": "2023-02-16T14:30:01Z"
+    },
+    {
+        "id": "2345678901",
+        "title": "Unusual File System Activity",
+        "description": "Anomalous file system access detected on disk /dev/sda.",
+        "severity": "medium",
+        "created_at": "2023-02-16T14:30:01Z",
+        "updated_at": "2023-02-16T14:30:02Z"
+    }
+]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 1. **Install** the CLI (console script `tfscan`):
